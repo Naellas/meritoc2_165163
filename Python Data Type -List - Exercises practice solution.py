@@ -1,5 +1,7 @@
 
 print("=========================================1==========================================")
+print("Adding items within a list")
+print("====================================================================================")
 def ListSum(numbers):
     total = 0
     for n in numbers:
@@ -16,7 +18,8 @@ for n in range(NumberOfItemsInList1):
 print("Adding all items in list results in: ", ListSum(NumberList1))
 
 print("=========================================2==========================================")
-
+print("Multiplying items within a list")
+print("====================================================================================")
 def ListMultiply(numbers):
     total = 1
     for n in numbers:
@@ -33,7 +36,8 @@ for n in range(NumberOfItemsInList2):
 print("Multiplying all items in list results in: ", ListMultiply(NumberList2))
 
 print("=========================================3==========================================")
-
+print("Finding largest item within a list")
+print("====================================================================================")
 NumberOfItemsInList3 = int(input("How many numbers would you like in your list? "))
 NumberList3 = [None] * NumberOfItemsInList3
 
@@ -51,6 +55,8 @@ def FindLargest(Number):
 print("Largest item in your list is: ", FindLargest(NumberList3))
 
 print("=========================================17==========================================")
+print("Finding if list is consisted of prime numbers")
+print("====================================================================================")
 def ReturnIfAllPrime(NumbersList4_1):
     return all(FindPrimeNumbers(n) for n in NumbersList4_1)
 
