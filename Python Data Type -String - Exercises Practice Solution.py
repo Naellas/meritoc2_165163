@@ -166,3 +166,5 @@ String19 = input("Please type in the string to be displayed before separator: ")
 Separator19 = input("Please type in separator until which string will be displayed: ")
 
 print(ReduceStringUntilCertainCharacter19(String19, Separator19))
+
+print("========================================20==========================================") 
