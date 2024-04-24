@@ -1,4 +1,4 @@
-
+"""
 print("=========================================1==========================================")
 print("Adding items within a list")
 print("====================================================================================")
@@ -82,4 +82,25 @@ if ReturnIfAllPrime(NumberList4) == True:
     print("Your list: ", NumberList4, " consists only of prime numbers.")
 else:
     print("Your list: ", NumberList4, " consists not only of prime numbers.")
+
+print("=========================================21==========================================")
+print("Converting a list of characters into a string")
+print("====================================================================================")
         
+def ConvertToString(ListOfCharacters):
+    String21 = ''.join(ListOfCharacters)
+    return String21
+
+NumberOfItemsInList4 = int(input("How many numbers would you like in your list? "))
+CharacterList21 = [None] * NumberOfItemsInList4
+
+for n in range(NumberOfItemsInList4):
+    print("Please input ", n+1, " character: ")
+    CharacterList21[n] = input()
+
+print("Character list: ", CharacterList21, "has been converted to following string: ", ConvertToString(CharacterList21))
+
+"""
+print("=========================================21==========================================")
+print("Converting a list of characters into a string")
+print("====================================================================================")
