@@ -1,4 +1,4 @@
-"""
+
 print("=========================================1==========================================")
 StringToCheckLength = input("Enter string which you want to check: ")
 print("Your string length is:")
@@ -108,7 +108,7 @@ print(String13.lower())
 print("========================================14==========================================")
 String14 = input("Please type in comma separated values into a string so that they are split and sorted alphabetically: ")
 String14Split = String14.split(",")
-print(sorted(String14Split))
+print(sorted(set(String14Split)))
 
 print("========================================15==========================================")
 def AddHTMLTags15(Char15, String15):
@@ -152,7 +152,7 @@ def CreateStringFromFirstTreeCharacters18(InputString18):
 String18 = input("Please type in string to create new string from its first 3 characters. If string is shorter than 3, entire string will be returned: ")
 
 print(CreateStringFromFirstTreeCharacters18(String18))
-"""
+
 print("========================================19==========================================")   
 def ReduceStringUntilCertainCharacter19(InputString19, InputSeparator19):
     n = 0
@@ -168,3 +168,29 @@ Separator19 = input("Please type in separator until which string will be display
 print(ReduceStringUntilCertainCharacter19(String19, Separator19))
 
 print("========================================20==========================================") 
+String20 = input("Please insert string to be reversed if it's length is a multiple of 4: ")
+
+if len(String20)%4 == 0:
+    print("Your reversed string: " + String20[::-1])
+else:
+    print("String: " + String20 + " was not reversed as its length is not a multiple of 4")
+
+
+print("========================================62==========================================") 
+String62 = input("Please insert string from which numbers will be extracted and summed up: ")
+SumOfNumbers62 = int()
+for Character in String62:
+    if Character.isdigit():
+        SumOfNumbers62 += int(Character)
+
+print("Sum of numbers within your string is: ", SumOfNumbers62)
+
+print("========================================72==========================================") 
+String72 = input("Please type in string from which to remove characters: ")
+Character72 = input("Please type in the character that you want to keep in aforementioned string: ")
+NewString72 = ""
+for Character in String72:
+    if Character == Character72:
+        NewString72 += Character
+print("Your new string is: " + NewString72)
+
