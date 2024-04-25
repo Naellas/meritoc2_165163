@@ -177,14 +177,14 @@ print("=========================================52==============================
 print("Compute difference between two lists")
 print("====================================================================================")
 
-def ComputeListDifference(list1, list2):
+def ComputeListDifference(ListA, ListB):
     List1_List2 = []
     List2_List1 = []
-    for item in list1:
-        if item not in list2:
+    for item in ListA:
+        if item not in ListB:
             List1_List2.append(item)
-    for item in list2:
-        if item not in list1:
+    for item in ListB:
+        if item not in ListA:
             List2_List1.append(item)
     return [List1_List2, List2_List1]
 
@@ -269,7 +269,7 @@ print("Rounded numbers multiplied by 5 and sorted: ")
 for Number in SortedMultipliedRoundedList:
     print(Number, end=" ")
 
-"""
+
 print("=========================================190==========================================")
 print("Find specified number of largest products from two given lists multiplying an element from each list")
 print("====================================================================================")
@@ -301,3 +301,115 @@ for x in range(XLargestItems):
     SortedLargestListSelectedAmount.append(SortedLargestList[x])
 
 print("All items within provided lists were multiplied. Largest items to provided quantity are: ", SortedLargestListSelectedAmount)
+
+
+print("=========================================129==========================================")
+print("Find specified number of largest products from two given lists multiplying an element from each list")
+print("At this stage user input has been abandoned due to time crunch, however this still could be done")
+print("====================================================================================")
+
+def reverse_lists(ListA):
+    return [sublist[::-1] for sublist in ListA]
+
+ListA = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+reversed_list = reverse_lists(ListA)
+print("Original list of lists:")
+print(ListA)
+print("Reverse each list in the said list of lists:")
+print(reversed_list)
+
+
+print("=========================================131==========================================")
+print("Count the frequency of consecutive duplicate elements in a list of numbers")
+print("====================================================================================")
+
+def consecutive_duplicates(ListA):
+    Freq = {}
+    prev = None
+    for item in ListA:
+        if item == prev:
+            Freq[item] = Freq.get(item, 1) + 1
+        Prev = item
+    return Freq
+
+OriginalList131 = [1, 2, 2, 2, 4, 4, 4, 5, 5, 5, 5]
+result = consecutive_duplicates(ListA)
+print("Original lists:")
+print(ListA)
+print("Consecutive duplicate elements and their frequency:")
+print(result)
+
+
+
+print("=========================================127==========================================")
+print("Remove words from a list of strings containing a character or string")
+print("====================================================================================")
+
+def remove_words(ListA, Characters):
+        return [' '.join(word for word in sentence.split() if all(char not in word for char in Characters)) for sentence in ListA]
+
+
+
+OriginalList127 = ['Red color', 'Orange#', 'Green', 'Orange @', 'White']
+Characters = ['#', 'color', '@']
+NewList127 = remove_words(OriginalList127, Characters)
+print("Original list:")
+print(OriginalList127)
+print("Character list:")
+print(Characters)
+print("New list:")
+print(NewList127)
+
+print("=========================================130==========================================")
+print("Write a Python program to count the same pair in three given lists.")
+print("====================================================================================")
+
+
+def CountSamePairs(List1, List2, List3):
+    return sum(1 for a, b, c in zip(List1, List2, List3) if a == b == c)
+
+List1 = [1, 2, 3, 4, 5, 6, 7, 8]
+List2 = [2, 2, 3, 1, 2, 6, 7, 9]
+List3 = [2, 1, 3, 1, 2, 6, 7, 9]
+SamePairs = CountSamePairs(List1, List2, List3)
+print("Provided lists: ", List1, List2, List3)
+print("Number of same pairs in the three given lists:", SamePairs)
+"""
+print("=========================================181==========================================")
+print("Write a Python program to iterate a given list cyclically at a specific Index position.")
+print("====================================================================================")
+
+def CyclicIteration(ListA, Index):
+    Index = Index % len(ListA)
+    return ListA[Index:] + ListA[:Index]
+
+
+ListA = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+Index = 3
+print("Original list:")
+print(ListA)
+print("Iterate the said list cyclically on specific Index position", Index, ":")
+print(CyclicIteration(ListA, Index))
+
+Index = 5
+print("Iterate the said list cyclically on specific Index position", Index, ":")
+print(CyclicIteration(ListA, Index))
+
+print("=========================================181==========================================")
+print("Write a Python program to iterate a given list cyclically at a specific Index position.")
+print("====================================================================================")
+
+def find_max_min(ListA, ListB, ListC):
+    MaximumValue = max(max(ListA), max(ListB), max(ListC))
+    MinimumValue = min(min(ListA), min(ListB), min(ListC))
+    return MaximumValue, MinimumValue
+
+ListA = [2, 3, 5, 8, 7, 2, 3]
+ListB = [4, 3, 9, 0, 4, 3, 9]
+ListC = [2, 1, 5, 6, 5, 5, 4]
+
+MaximumValue, MinimumValue = find_max_min(ListA, ListB, ListC)
+print("Provided lists: ", ListA, ListB, ListC)
+print("Maximum value of the said three lists:", MaximumValue)
+print("Minimum value of the said three lists:", MinimumValue)
+
