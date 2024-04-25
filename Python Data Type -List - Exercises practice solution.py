@@ -206,7 +206,7 @@ List2_List1 = difference[1]
 print("List1 - List2: ", List1_List2)
 print("List2 - List1: ", List2_List1)
 
-"""
+
 
 print("=========================================66==========================================")
 print("Finding all numbers greater than x within the list")
@@ -228,3 +228,76 @@ for n in range(NumberOfItemsInList66):
 Number66 = int(input("Please say above which number you would like to retrieve items from the list: "))
 
 print("Provided list: ", List66, ". Numbers that are greater than ", Number66, "Within that list: ", FindGreaterNumbers(List66, Number66))
+
+
+print("=========================================84==========================================")
+print("Round numbers in given list, print minimum and maximum value and multiply the results by 5. Print numbers in ascending order separated by space")
+print("====================================================================================")
+
+def RoundNumbers(InputList):
+    RoundedList = []
+    for x in InputList:
+        Number = float(x)
+        RoundedList.append(round(Number))
+    return RoundedList
+
+NumberOfItemsInList84 = int(input("Please type in the number of items in your list: "))
+List84 = []
+for n in range(NumberOfItemsInList84):
+    print("Please input item", n+1, ": ")
+    List84.append(input())
+
+RoundedList84 = RoundNumbers(List84)
+
+print("Provided list: ", List84, "has been rounded: ", RoundedList84)
+
+Maximum = RoundedList84[0]
+Minimum = RoundedList84[0]
+MultipliedRoundedList = RoundedList84
+
+for n in range(len(RoundedList84)):
+    if RoundedList84[n] > Maximum:
+        Maximum = RoundedList84[n]
+    elif RoundedList84[n] < Minimum:
+        Minimum = RoundedList84[n]
+    MultipliedRoundedList[n] = RoundedList84[n]*5
+
+SortedMultipliedRoundedList = sorted(MultipliedRoundedList)
+
+print("Maximum within rounded list: ", Maximum, ". Minimum within rounded list: ", Minimum, ".")
+print("Rounded numbers multiplied by 5 and sorted: ")
+for Number in SortedMultipliedRoundedList:
+    print(Number, end=" ")
+
+"""
+print("=========================================190==========================================")
+print("Find specified number of largest products from two given lists multiplying an element from each list")
+print("====================================================================================")
+
+def FindLargestProductsFromTwoLists(ListA, ListB):
+    LargestList = []
+    for x in ListA:
+        for y in ListB:
+            LargestList.append(int(x)*int(y))
+    return LargestList
+
+NumberOfItemsInList1 = int(input("Please type in the number of items in your first list: "))
+List1 = []
+for n in range(NumberOfItemsInList1):
+    print("Please input item", n+1, ": ")
+    List1.append(input())
+
+NumberOfItemsInList2 = int(input("Please type in the number of items in your second list: "))
+List2 = []
+for n in range(NumberOfItemsInList2):
+    print("Please input item", n+1, ": ")
+    List2.append(input())
+
+XLargestItems = int(input("Please type in how many largest items should be found: "))
+
+SortedLargestList = sorted(FindLargestProductsFromTwoLists(List1, List2), reverse=True)
+SortedLargestListSelectedAmount = []
+for x in range(XLargestItems):
+    SortedLargestListSelectedAmount.append(SortedLargestList[x])
+
+print("All items within provided lists were multiplied. Largest items to provided quantity are: ", SortedLargestListSelectedAmount)
