@@ -1,4 +1,4 @@
-"""
+
 print("=========================================5==========================================")
 print("Write a Python program that accepts a word from the user and reverses it.")
 print("====================================================================================")
@@ -177,7 +177,7 @@ number = int(input("Input a number: "))
 
 for i in range(1, 11):
     print(f"{number} x {i} = {number * i}")
-"""
+
 print("=========================================16==========================================")
 print("Write a Python program to find numbers between 100 and 400 (both included) where each digit of a number is an even number. The numbers obtained should be printed in a comma-separated sequence.")
 print("====================================================================================")
@@ -211,3 +211,71 @@ input_string = input("Enter a string: ")
 digits, letters = count_digits_and_letters(input_string)
 print("Letters:", letters)
 print("Digits:", digits)
+
+print("=========================================33==========================================")
+print("Write a Python program to convert a month name to a number of days.")
+print("====================================================================================")
+
+def month_to_days(month):
+    months = {
+        'January': 31,
+        'February': 28,
+        'March': 31,
+        'April': 30,
+        'May': 31,
+        'June': 30,
+        'July': 31,
+        'August': 31,
+        'September': 30,
+        'October': 31,
+        'November': 30,
+        'December': 31
+    }
+    return months.get(month, 'Invalid month')
+
+month_name = input("Input the name of Month: ").capitalize()
+days = month_to_days(month_name)
+if days != 'Invalid month':
+    print(f"No. of days: {days} days")
+else:
+    print("Invalid month name. Please enter a valid month name.")
+
+
+print("=========================================15==========================================")
+print("Write a Python program to check the validity of passwords input by users.")
+print("====================================================================================")
+
+def is_valid_password(password):
+    uppercase_present = False
+    lowercase_present = False
+    digit_present = False
+    special_present = False
+    special_characters = ['$','#','@']
+
+    if len(password) < 6 or len(password) > 16:
+        return False, "Password length should be between 6 and 16 characters"
+
+    for char in password:
+        if char.isupper():
+            uppercase_present = True
+        elif char.islower():
+            lowercase_present = True
+        elif char.isdigit():
+            digit_present = True
+        elif char in special_characters:
+            special_present = True
+
+    if not uppercase_present:
+        return False, "Password must contain at least one uppercase letter"
+    if not lowercase_present:
+        return False, "Password must contain at least one lowercase letter"
+    if not digit_present:
+        return False, "Password must contain at least one digit"
+    if not special_present:
+        return False, "Password must contain at least one of the following special characters: $, #, @"
+
+    return True, "Password is valid"
+
+password = input("Enter password: ")
+valid, message = is_valid_password(password)
+print(message)
