@@ -1,4 +1,4 @@
-"""
+
 print("=========================================1==========================================")
 print("Adding items within a list")
 print("====================================================================================")
@@ -374,7 +374,7 @@ List3 = [2, 1, 3, 1, 2, 6, 7, 9]
 SamePairs = CountSamePairs(List1, List2, List3)
 print("Provided lists: ", List1, List2, List3)
 print("Number of same pairs in the three given lists:", SamePairs)
-"""
+
 print("=========================================181==========================================")
 print("Write a Python program to iterate a given list cyclically at a specific Index position.")
 print("====================================================================================")
@@ -413,3 +413,45 @@ print("Provided lists: ", ListA, ListB, ListC)
 print("Maximum value of the said three lists:", MaximumValue)
 print("Minimum value of the said three lists:", MinimumValue)
 
+print("=========================================214==========================================")
+print("Write a Python program to sort a given positive number in descending/ascending order.")
+print("====================================================================================")
+
+def sort_number(Number):
+
+    Digits = [int(Digit) for Digit in str(Number)]
+    
+
+    DescendingOrder = int(''.join(map(str, sorted(Digits, reverse=True))))
+    AscendingOrder = int(''.join(map(str, sorted(Digits))))
+    
+    return DescendingOrder, AscendingOrder
+
+OriginalNumber = 134543
+Descending, Ascending = sort_number(OriginalNumber)
+print("Original Number:", OriginalNumber)
+print("Descending order of the said number:", Descending)
+print("Ascending order of the said number:", Ascending)
+
+print("=========================================66==========================================")
+print("Write a Python program to find the list in a list of lists whose sum of elements is the highest.")
+print("====================================================================================")
+
+def FindMaxSumList(Lists):
+    MaxSum = float('-inf')
+    max_list = []
+
+    for Sublist in Lists:
+        current_sum = sum(Sublist)
+        if current_sum > MaxSum:
+            MaxSum = current_sum
+            max_list = Sublist
+
+    return max_list
+
+ListA = [[1, 2, 3], [4, 5, 6], [10, 11, 12], [7, 8, 9]]
+
+MaxSumList = FindMaxSumList(ListA)
+
+print("Sample lists:", ListA)
+print("List with the highest sum of elements:", MaxSumList)
