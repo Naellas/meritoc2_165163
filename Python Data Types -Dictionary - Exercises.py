@@ -129,3 +129,42 @@ for key in Dictionary32:
         print(sub_key, ':', Dictionary32[key][sub_key])
 
 
+print("=========================================76==========================================")
+print("Write a Python program to combine two lists into a dictionary. The elements of the first one serve as keys and the elements of the second one serve as values. Each item in the first list must be unique and hashable.")
+print("====================================================================================")
+
+Keys76 = ['a', 'b', 'c', 'd', 'e', 'f']
+Values76 = [1,2,3,4,5]
+
+CombinedDictionary76 = {Keys76[i]: Values76[i] for i  in range(min(len(Keys76), len(Values76)))}
+
+print("Initial keys: ", Keys76, " Initial values: ", Values76)
+print("Combined lists in dictionary: ", CombinedDictionary76)
+
+print("=========================================79==========================================")
+print("Write a Python program to create a flat list of all the values in a flat dictionary.")
+print("====================================================================================")
+
+Dictionary79 = {'Theodore': 19, 'Roxanne': 20, 'Mathew': 21, 'Betty': 20}
+NewList79 = []
+
+for x in Dictionary79:
+    NewList79.append(Dictionary79[x])
+
+print("Original dictionary: ", Dictionary79)
+print("List of values: ", NewList79)
+
+
+print("=========================================80==========================================")
+print("Write a Python program to find the key of the maximum value in a dictionary.")
+print("====================================================================================")
+
+Dictionary80 = {'Theodore': 19, 'Roxanne': 22, 'Mathew': 21, 'Betty': 20}
+
+MaxKey80 = max(Dictionary80, key=Dictionary80.get)
+MinKey80 = min(Dictionary80, key=Dictionary80.get)
+
+print("Original dictionary: ", Dictionary80)
+print("Maximum value key: ", MaxKey80)
+print("Minimum value key: ", MinKey80)
+
