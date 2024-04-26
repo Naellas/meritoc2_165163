@@ -123,10 +123,10 @@ print("=========================================================================
 
 Dictionary32 = {'Alex' : {'Grade' : 10, 'DOB': 1999}, 'Sophia' : {'Grade' : 6, 'DOB': 2001}}
 print("Original dictionary: ", Dictionary32)
-for key in Dictionary32:
-    print(key)
-    for sub_key in Dictionary32[key]:
-        print(sub_key, ':', Dictionary32[key][sub_key])
+for key32 in Dictionary32:
+    print(key32)
+    for sub_key in Dictionary32[key32]:
+        print(sub_key, ':', Dictionary32[key32][sub_key])
 
 
 print("=========================================76==========================================")
@@ -167,4 +167,37 @@ MinKey80 = min(Dictionary80, key=Dictionary80.get)
 print("Original dictionary: ", Dictionary80)
 print("Maximum value key: ", MaxKey80)
 print("Minimum value key: ", MinKey80)
+
+print("=========================================57==========================================")
+print("Write a Python program to filter even numbers from a dictionary of values.")
+print("====================================================================================")
+
+Dictionary57 = {'V': [1, 4, 6, 10], 'VI': [1, 4, 12], 'VII': [1, 3, 8]}
+FilteredDictionary57 = {}
+
+for Key57, Value57 in Dictionary57.items():
+    EvenNumbers = [num for num in Value57 if num % 2 == 0]
+    FilteredDictionary57[Key57] = EvenNumbers
+
+print("Original dictionary: ", Dictionary57)
+
+print("Filtered dictionary (even numbers only):", FilteredDictionary57)
+
+
+print("=========================================51==========================================")
+print("Write a Python program to filter even numbers from a dictionary of values.")
+print("====================================================================================")
+
+def UpdateListValues51(dictionary, subject, newvalues):
+    if subject in dictionary:
+        dictionary[subject] = newvalues
+    
+Dictionary51 = {'Math': [88, 89, 90], 'Physics': [92, 94, 89], 'Chemistry': [90, 87, 93]}
+print("Original dictionary: ", Dictionary51)
+
+UpdateListValues51(Dictionary51, 'Math', [89,91,100])
+UpdateListValues51(Dictionary51, 'Physics', [95,90,105])
+UpdateListValues51(Dictionary51, 'Chemistry', [13,52,147])
+
+print("Updated dictionary: ", Dictionary51)
 
