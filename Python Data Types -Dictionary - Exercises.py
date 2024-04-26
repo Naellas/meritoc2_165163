@@ -185,7 +185,7 @@ print("Filtered dictionary (even numbers only):", FilteredDictionary57)
 
 
 print("=========================================51==========================================")
-print("Write a Python program to filter even numbers from a dictionary of values.")
+print("A Python Dictionary contains List as a value. Write a Python program to update the list values in the said dictionary.")
 print("====================================================================================")
 
 def UpdateListValues51(dictionary, subject, newvalues):
@@ -200,4 +200,48 @@ UpdateListValues51(Dictionary51, 'Physics', [95,90,105])
 UpdateListValues51(Dictionary51, 'Chemistry', [13,52,147])
 
 print("Updated dictionary: ", Dictionary51)
+
+print("=========================================46==========================================")
+print("Write a Python program to create a dictionary grouping a sequence of key-value pairs into a dictionary of lists.")
+print("====================================================================================")
+
+List46 = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
+print("Original list: ", List46)
+
+Dictionary46 = {}
+
+for x, y in List46:
+    if x in Dictionary46:
+        Dictionary46[x].append(y)
+    else:
+        Dictionary46[x] = [y]
+
+print("Created dictionary from list: ", Dictionary46)
+
+print("=========================================42==========================================")
+print("Write a Python program to create a dictionary grouping a sequence of key-value pairs into a dictionary of lists.")
+print("====================================================================================")
+
+Dictionary42 = {'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190}
+print("Original Dictionary:")
+print(Dictionary42)
+
+Filter42 = 170
+
+FilteredDictionary42 = {key: value for key, value in Dictionary42.items() if value > Filter42}
+print("Marks greater than", Filter42, ":", FilteredDictionary42)
+
+print("=========================================30==========================================")
+print("Write a Python program to get the top three items in a shop.")
+print("====================================================================================")
+
+Dictionary30 = {'item1': 45.50, 'item2': 35, 'item3': 41.30, 'item4': 55, 'item5': 24}
+
+print("Original dictionary:", Dictionary30)
+
+SortedDictionary30 = sorted(Dictionary30.items(), key=lambda x: x[1], reverse=True)
+
+print("Largest 3 items:")
+for item, price in SortedDictionary30[:3]:
+    print(item, ":", price)
 
