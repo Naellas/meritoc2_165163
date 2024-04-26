@@ -64,7 +64,7 @@ print("Dictionary: ", Dictionary5)
 for Key, Value in Dictionary5.items():
     print(Key, " - ", Value)
 
-print("=========================================6==========================================")
+print("=========================================7==========================================")
 print("Write a Python script to print a dictionary where the keys are numbers between 1 and 15 (both included) and the values are the square of the keys.")
 print("====================================================================================")
 
@@ -74,3 +74,58 @@ for Number in range(1,16):
     Dictionary6[Number] = Number ** 2
 
 print("Created dictionary: ", Dictionary6)
+
+print("=========================================18==========================================")
+print("Write a Python program to check if a dictionary is empty or not.")
+print("====================================================================================")
+print("Dictionary has been initialized here!")
+Dictionary18 = {}
+if not bool(Dictionary18):
+    print("Dictionary is empty")
+else:
+    print("Dictionary is not empty: ", Dictionary18)
+
+print("=========================================19==========================================")
+print("Write a Python program to combine two dictionary by adding values for common keys.")
+print("====================================================================================")
+
+Dictionary19_1 = {'a': 100, 'b': 200, 'c':300}
+Dictionary19_2 = {'a': 300, 'b': 200, 'd':400}
+SummedDictionary19 = {}
+
+for key, value in Dictionary19_1.items():
+    if key in Dictionary19_2:
+        SummedDictionary19[key] = Dictionary19_1[key] + Dictionary19_2[key]
+    else:
+        SummedDictionary19[key] = Dictionary19_1[key]
+
+for key, value in Dictionary19_2.items():
+    if key not in Dictionary19_1:
+        SummedDictionary19[key] = Dictionary19_2[key]
+
+print(SummedDictionary19)
+
+print("=========================================26==========================================")
+print("Write a Python program to combine two dictionary by adding values for common keys.")
+print("====================================================================================")
+
+Dictionary26 = {'a': [1, 2, 3], 'b': [4, 5]}
+print("Original dictionary: ", Dictionary26)
+
+for key, value in Dictionary26.items():
+    print(len(value))
+
+
+
+print("=========================================32==========================================")
+print("Write a Python program to print a dictionary line by line.")
+print("====================================================================================")
+
+Dictionary32 = {'Alex' : {'Grade' : 10, 'DOB': 1999}, 'Sophia' : {'Grade' : 6, 'DOB': 2001}}
+print("Original dictionary: ", Dictionary32)
+for key in Dictionary32:
+    print(key)
+    for sub_key in Dictionary32[key]:
+        print(sub_key, ':', Dictionary32[key][sub_key])
+
+
