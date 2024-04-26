@@ -91,6 +91,7 @@ print("=========================================================================
 
 Dictionary19_1 = {'a': 100, 'b': 200, 'c':300}
 Dictionary19_2 = {'a': 300, 'b': 200, 'd':400}
+print('Dictionary 1: ', Dictionary19_1, 'Dictionary 2: ', Dictionary19_2)
 SummedDictionary19 = {}
 
 for key, value in Dictionary19_1.items():
@@ -245,3 +246,35 @@ print("Largest 3 items:")
 for item, price in SortedDictionary30[:3]:
     print(item, ":", price)
 
+print("=========================================33==========================================")
+print("Write a Python program to check if multiple keys exist in a dictionary.")
+print("====================================================================================")
+
+Dictionary33 = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+
+Keys33 = ['a', 'c', 'e']
+
+print("Dictionary: ", Dictionary33, ". Keys to search for: ", Keys33)
+
+for key in Keys33:
+    if key not in Dictionary33:
+        print("Key: ", key, "does not exist in dictionary.")
+    else:
+        print("Key: ", key, "found in dictionary.")
+
+print("=========================================12==========================================")
+print("Write a Python program to remove a key from a dictionary.")
+print("====================================================================================")
+
+Dictionary12 = {'a': 1, 'b': 2, 'c': 3}
+KeyToRemove12 = 'b'
+print("Original dictionary: ", Dictionary12, "Key to remove: ", KeyToRemove12)
+
+RemovedValue12 = Dictionary12.pop(KeyToRemove12, None)
+
+if RemovedValue12 is not None:
+    print("Key ", KeyToRemove12, " with value ", RemovedValue12, " removed successfully.")
+else:
+    print("Key ", KeyToRemove12, " not found in the dictionary.")
+
+print("Updated dictionary: ", Dictionary12)
