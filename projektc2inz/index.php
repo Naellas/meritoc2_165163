@@ -11,31 +11,27 @@
     <div class="container">
         <div class="gallery">
             <?php
-                // Połączenie z bazą danych PostgreSQL
-                $host = 'storedb.postgres.database.azure.com';
-                $port = '5432';
-                $dbname = 'postgres';
-                $user = 'auodswsanl';
-                $password = 'your_password';
+                // Połączenie z bazą danych MySQL na Azure
+                $host = 'oursimplestore-server.mysql.database.azure.com';
+                $username = 'ggjhreugie';
+                $password = 'claptrap1029!';
+                $dbname = 'oursimplestore-database';
 
-                $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+                // Utworzenie połączenia
+                $conn = new mysqli($host, $username, $password, $dbname);
 
-                if (!$conn) {
-                    echo "An error occurred.\n";
-                    exit;
+                // Sprawdzenie połączenia
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
                 }
 
-                // Pobieranie produktów z bazy danych
-                $result = pg_query($conn, "SELECT * FROM products");
+                // Pobranie produktów z bazy danych
+                $sql = "SELECT * FROM products";
+                $result = $conn->query($sql);
 
-                if (!$result) {
-                    echo "An error occurred.\n";
-                    exit;
-                }
-
-                if (pg_num_rows($result) > 0) {
-                    // Wyświetlanie każdego produktu
-                    while ($row = pg_fetch_assoc($result)) {
+                if ($result->num_rows > 0) {
+                    // Wyświetlenie każdego produktu
+                    while($row = $result->fetch_assoc()) {
                         echo '<div class="product">';
                         echo '<img src="' . $row['image_url'] . '" alt="' . $row['name'] . '">';
                         echo '<h2>' . $row['name'] . '</h2>';
@@ -48,7 +44,7 @@
                     echo "0 results";
                 }
 
-                pg_close($conn);
+                $conn->close();
             ?>
         </div>
 
