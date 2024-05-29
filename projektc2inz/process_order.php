@@ -8,7 +8,7 @@ $cartItems = json_decode($_POST['cartItems'], true); // Decode cartItems JSON
 $host = 'storedbserv.database.windows.net';
 $username = 'maciejczaplicki';
 $password = 'Claptrap10293847!@#';
- $dbname = 'oursimplestore-database';
+$dbname = 'storedb_main';
 
 // Utworzenie połączenia
 $conn = new mysqli($host, $username, $password, $dbname);
