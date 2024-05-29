@@ -11,41 +11,46 @@
     <div class="container">
         <div class="gallery">
             <?php
+                // Włącz wyświetlanie błędów (do debugowania)
+                ini_set('display_errors', 1);
+                ini_set('display_startup_errors', 1);
+                error_reporting(E_ALL);
+
                 // Połączenie z bazą danych SQL Server na Azure
                 $host = 'storedbserv.database.windows.net';
                 $username = 'maciejczaplicki';
                 $password = 'Claptrap10293847!@#';
                 $dbname = 'storedb_main';
 
-                // Utworzenie połączenia
-                $conn = new PDO("sqlsrv:server=$host;Database=$dbname", $username, $password);
+                try {
+                    // Utworzenie połączenia
+                    $conn = new PDO("sqlsrv:server=$host;Database=$dbname", $username, $password);
+                    // Ustawienie trybu błędów PDO na Exception
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                // Sprawdzenie połączenia
-                if ($conn === false) {
-                    die(print_r(sqlsrv_errors(), true));
+                    // Pobranie produktów z bazy danych
+                    $sql = "SELECT * FROM products";
+                    $stmt = $conn->query($sql);
+
+                    // Sprawdzenie, czy są wyniki
+                    if ($stmt->rowCount() > 0) {
+                        // Wyświetlenie każdego produktu
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            echo '<div class="product">';
+                            echo '<img src="' . htmlspecialchars($row['image_url']) . '" alt="' . htmlspecialchars($row['name']) . '">';
+                            echo '<h2>' . htmlspecialchars($row['name']) . '</h2>';
+                            echo '<p>' . htmlspecialchars($row['description']) . '</p>';
+                            echo '<p>Price: $' . htmlspecialchars($row['price']) . '</p>';
+                            echo '<button onclick="addToCart(\'' . htmlspecialchars($row['name']) . '\', ' . htmlspecialchars($row['price']) . ')">Add to Cart</button>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo "No products found.";
+                    }
+
+                } catch (PDOException $e) {
+                    echo "Connection failed: " . $e->getMessage();
                 }
-
-                // Pobranie produktów z bazy danych
-                $sql = "SELECT * FROM products";
-                $stmt = $conn->query($sql);
-
-                if ($stmt === false) {
-                    die(print_r(sqlsrv_errors(), true));
-                }
-
-                // Wyświetlenie każdego produktu
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<div class="product">';
-                    echo '<img src="' . htmlspecialchars($row['image_url']) . '" alt="' . htmlspecialchars($row['name']) . '">';
-                    echo '<h2>' . htmlspecialchars($row['name']) . '</h2>';
-                    echo '<p>' . htmlspecialchars($row['description']) . '</p>';
-                    echo '<p>Price: $' . htmlspecialchars($row['price']) . '</p>';
-                    echo '<button onclick="addToCart(\'' . htmlspecialchars($row['name']) . '\', ' . htmlspecialchars($row['price']) . ')">Add to Cart</button>';
-                    echo '</div>';
-                }
-
-                // Zamknięcie połączenia
-                $conn = null;
             ?>
         </div>
 
