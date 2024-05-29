@@ -11,40 +11,41 @@
     <div class="container">
         <div class="gallery">
             <?php
-                // Połączenie z bazą danych MySQL na Azure
+                // Połączenie z bazą danych SQL Server na Azure
                 $host = 'storedbserv.database.windows.net';
                 $username = 'maciejczaplicki';
-                $password = 'Claptrap10293847!@#';
+                $password = 'temppass';
                 $dbname = 'storedb_main';
 
                 // Utworzenie połączenia
-                $conn = new mysqli($host, $username, $password, $dbname);
+                $conn = new PDO("sqlsrv:server=$host;Database=$dbname", $username, $password);
 
                 // Sprawdzenie połączenia
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
+                if ($conn === false) {
+                    die(print_r(sqlsrv_errors(), true));
                 }
 
                 // Pobranie produktów z bazy danych
                 $sql = "SELECT * FROM products";
-                $result = $conn->query($sql);
+                $stmt = $conn->query($sql);
 
-                if ($result->num_rows > 0) {
-                    // Wyświetlenie każdego produktu
-                    while($row = $result->fetch_assoc()) {
-                        echo '<div class="product">';
-                        echo '<img src="' . $row['image_url'] . '" alt="' . $row['name'] . '">';
-                        echo '<h2>' . $row['name'] . '</h2>';
-                        echo '<p>' . $row['description'] . '</p>';
-                        echo '<p>Price: $' . $row['price'] . '</p>';
-                        echo '<button onclick="addToCart(\'' . $row['name'] . '\', ' . $row['price'] . ')">Add to Cart</button>';
-                        echo '</div>';
-                    }
-                } else {
-                    echo "0 results";
+                if ($stmt === false) {
+                    die(print_r(sqlsrv_errors(), true));
                 }
 
-                $conn->close();
+                // Wyświetlenie każdego produktu
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<div class="product">';
+                    echo '<img src="' . htmlspecialchars($row['image_url']) . '" alt="' . htmlspecialchars($row['name']) . '">';
+                    echo '<h2>' . htmlspecialchars($row['name']) . '</h2>';
+                    echo '<p>' . htmlspecialchars($row['description']) . '</p>';
+                    echo '<p>Price: $' . htmlspecialchars($row['price']) . '</p>';
+                    echo '<button onclick="addToCart(\'' . htmlspecialchars($row['name']) . '\', ' . htmlspecialchars($row['price']) . ')">Add to Cart</button>';
+                    echo '</div>';
+                }
+
+                // Zamknięcie połączenia
+                $conn = null;
             ?>
         </div>
 
