@@ -4,60 +4,56 @@ $email = $_POST['email'];
 $total = $_POST['total'];
 $cartItems = json_decode($_POST['cartItems'], true); // Decode cartItems JSON
 
-// Połączenie z bazą danych PostgreSQL
-$host = 'storedb.postgres.database.azure.com';
-$port = '5432';
-$dbname = 'postgres';
-$user = 'auodswsanl';
-$password = 'your_password';
+// Połączenie z bazą danych MySQL na Azure
+                $host = 'simplestoredatabase.mysql.database.azure.com';
+                $username = 'maciejczaplicki';
+                $password = 'Claptrap10293847!';
+                $dbname = 'oursimplestore-database';
 
-$conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+// Utworzenie połączenia
+$conn = new mysqli($host, $username, $password, $dbname);
 
-if (!$conn) {
-    echo "An error occurred.\n";
-    exit;
+// Sprawdzenie połączenia
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 try {
     // Rozpoczęcie transakcji
-    pg_query($conn, "BEGIN");
+    $conn->begin_transaction();
 
     // Dodanie nowego wpisu do tabeli orders
-    $sql = "INSERT INTO orders (email, total) VALUES ('$email', $total) RETURNING order_id";
-    $result = pg_query($conn, $sql);
-    
-    if ($result) {
-        $row = pg_fetch_assoc($result);
-        $orderId = $row['order_id'];
-    
-        // Dodanie szczegółów koszyka do tabeli order_items
-        foreach ($cartItems as $item) {
-            $productName = pg_escape_string($item['name']);
-            $price = $item['price'];
-            $quantity = $item['quantity'];
+    $sql = "INSERT INTO orders (email, total) VALUES ('$email', $total)";
+    $conn->query($sql);
 
-            $sqlItems = "INSERT INTO order_items (order_id, product_name, price, quantity) VALUES ($orderId, '$productName', $price, $quantity)";
-            $resultItems = pg_query($conn, $sqlItems);
+    // Pobranie identyfikatora ostatnio dodanego zamówienia
+    $orderId = $conn->insert_id;
 
-            if (!$resultItems) {
-                throw new Exception("Error inserting order items.");
-            }
+    // Dodanie szczegółów koszyka do tabeli order_items
+    foreach ($cartItems as $item) {
+        $productName = $conn->real_escape_string($item['name']);
+        $price = $item['price'];
+        $quantity = $item['quantity'];
+
+        $sqlItems = "INSERT INTO order_items (order_id, product_name, price, quantity) VALUES ($orderId, '$productName', $price, $quantity)";
+        $conn->query($sqlItems);
+
+        if (!$conn->affected_rows) {
+            throw new Exception("Error inserting order items.");
         }
-        
-        // Zakończenie transakcji
-        pg_query($conn, "COMMIT");
-
-        echo "Order placed successfully!";
-    } else {
-        throw new Exception("Error inserting order.");
     }
+
+    // Zakończenie transakcji
+    $conn->commit();
+
+    echo "Order placed successfully!";
 } catch (Exception $e) {
     // Wycofanie transakcji w przypadku błędu
-    pg_query($conn, "ROLLBACK");
+    $conn->rollback();
     
     echo "Error: " . $e->getMessage();
 }
 
 // Zamknięcie połączenia
-pg_close($conn);
+$conn->close();
 ?>
