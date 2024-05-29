@@ -14,7 +14,7 @@
                 // Połączenie z bazą danych SQL Server na Azure
                 $host = 'storedbserv.database.windows.net';
                 $username = 'maciejczaplicki';
-                $password = 'temppass';
+                $password = 'Claptrap10293847!@#';
                 $dbname = 'storedb_main';
 
                 // Utworzenie połączenia
