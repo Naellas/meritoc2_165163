@@ -12,9 +12,9 @@
         <div class="gallery">
             <?php
                 // Połączenie z bazą danych MySQL na Azure
-                $host = 'simplestoredatabase.mysql.database.azure.com';
+                $host = 'storedbserv.database.windows.net';
                 $username = 'maciejczaplicki';
-                $password = 'Claptrap10293847!';
+                $password = 'Claptrap10293847!@#';
                 $dbname = 'oursimplestore-database';
 
                 // Utworzenie połączenia

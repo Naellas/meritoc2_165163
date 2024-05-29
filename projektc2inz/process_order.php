@@ -5,10 +5,10 @@ $total = $_POST['total'];
 $cartItems = json_decode($_POST['cartItems'], true); // Decode cartItems JSON
 
 // Połączenie z bazą danych MySQL na Azure
-                $host = 'simplestoredatabase.mysql.database.azure.com';
-                $username = 'maciejczaplicki';
-                $password = 'Claptrap10293847!';
-                $dbname = 'oursimplestore-database';
+$host = 'storedbserv.database.windows.net';
+$username = 'maciejczaplicki';
+$password = 'Claptrap10293847!@#';
+ $dbname = 'oursimplestore-database';
 
 // Utworzenie połączenia
 $conn = new mysqli($host, $username, $password, $dbname);
