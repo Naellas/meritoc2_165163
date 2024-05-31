@@ -1,14 +1,14 @@
 """
 print("=========================================1==========================================")
-print("Finding maximum of tree numbers")
+print("Finding maximum of three numbers")
 print("====================================================================================")
 
 def FindMaxNumber(Number1, Number2, Number3):
     Max1 = Number1
     if(Number2 > Max1):
         Max1 = Number2
-        if(Number3 > Max1):
-            Max1 = Number3
+    if(Number3 > Max1):
+        Max1 = Number3
         
     return Max1
 
@@ -283,7 +283,7 @@ def SortHyphenSeparatedWords(HyphenSeparatedString):
 HyphenSeparatedString = input("Please insert a hyphen-separated sequence of words: ")
 SortedString15 = SortHyphenSeparatedWords(HyphenSeparatedString)
 print("Sorted hyphen-separated sequence:", SortedString15)
-
+"""
 print("=========================================16==========================================")
 print("Write a  Python function to create and print a list where the values are the squares of numbers between 1 and 30 (both included).")
 print("====================================================================================")
@@ -325,7 +325,7 @@ TextToDisplay = input("Please enter the text to be styled: ")
 print("Styled text:", display_text(TextToDisplay))
 
 print("=========================================18==========================================")
-print("Write a Python program to access a function inside a function.")
+print("Write a Python program to execute a string containing  Python code.")
 print("====================================================================================")
 
 CodeString = input("Please enter the Python code to execute: ")
@@ -349,7 +349,7 @@ def outer_function():
 
 # Call the outer function
 outer_function()
-"""
+
 print("=========================================20==========================================")
 print("Write a  Python program to detect the number of local variables declared in a function.")
 print("====================================================================================")
@@ -360,3 +360,23 @@ def CountVariables():
     String1 = "This is a test string for a variable assignment"
 
 print(CountVariables.__code__.co_nlocals) 
+
+print("=========================================21==========================================")
+print("Write a Python program that invokes a function after a specified period of time.")
+print("====================================================================================")
+import time
+import math
+
+def invoke_after_delay(delay_ms, func):
+    time.sleep(delay_ms / 1000) 
+    func()
+
+def calculate_square_root():
+    numbers = [4, 100, 25000]
+    for number in numbers:
+        print(math.sqrt(number))
+
+delay_ms = int(input("Specify time delay in miliseconds: "))
+
+print("Square root after specific milliseconds:")
+invoke_after_delay(delay_ms, calculate_square_root)
